@@ -31,3 +31,22 @@ def see_votes(request):
         'people' : Person.objects.all()
     }
     return render(request, 'first_app/votes.html', variables)
+
+def add_person(request):
+    Person.objects.create(name = request.POST["name"])
+    return redirect("/goinput")
+
+def reset_votes(request):
+    for p in Person.objects.all():
+        p.total_vote = 0
+        p.people_voted = 0
+        p.average_vote = 0
+        p.save()
+    return redirect("/")
+
+def delete_database(request):
+    Person.objects.all().delete()
+    return redirect("/")
+
+def goinput(request):
+    return render(request, 'first_app/input.html')
