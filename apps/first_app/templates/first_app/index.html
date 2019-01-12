@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>SIGMA ETA PI DELIBS VOTING WINTER 2019</h1>
+    <h2>ONLY VOTE FOR EACH PERSON ONCE!!</h2>
+    <a href="/view_votes"><button>See everyone's average votes</button></a>
+    {% for p in people %}
+    <div style="border: solid 1px black;">
+        <h2>{{ p.name }}</h2>
+        <form action="/vote" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="person" value="{{ p.id }}">
+            <p>Your Vote: <input type="number" name="vote"></p>
+            <p>Days of Rush you attended: <input type="number" name="weight"></p>
+            <button>Submit</button>
+        </form>
+    </div>
+    {% endfor %}
+</body>
+</html>
