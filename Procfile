@@ -1,1 +1,1 @@
-web: gunicorn xyz.wsgi
+web: gunicorn delibs_2019.wsgi
