@@ -24,9 +24,6 @@ def view_votes(request):
             p.average_vote = p.total_vote
             p.save()
 
-    return redirect("/votes")
-
-def see_votes(request):
     variables = {
         'people' : Person.objects.all()
     }
